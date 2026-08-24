@@ -1,0 +1,77 @@
+body{
+    display: flex;
+}
+main{
+    flex-grow: 1;
+    background-color: #fAFAFA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'Pretendard';
+}
+.check{
+    display: flex;
+    flex-direction: column;
+    width: 1087px;
+    height: 380px;
+    overflow-y: scroll;
+    background-color: white;
+    border-radius: 15px;
+}
+.check h3{
+    margin: 20px;
+}
+.floor{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.floorLabel {
+    text-align: center;
+    width: 90px;
+    padding: 8px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4a5568;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.btn-checkbox {
+  display: none;
+}
+.btn-checkbox:checked + .floorLabel {
+  color: #ffffff;
+  background-color: #0052ff;
+  border-color: #0052ff;
+}
+.checkWrap{
+    margin: 0 auto;
+    width: 100;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.checkBlock{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #e3e3e3;
+    align-items: center;
+    justify-content: space-between;
+}
+.checkHead{
+    font-size: 22px;
+}
+.checkInfo{
+    font-size: 18px;
+    color: #808080;
+}
