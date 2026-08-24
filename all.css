@@ -93,15 +93,13 @@ header .linkWrap a{
     font-weight: 500;
     font-family: 'Pretendard';
     align-items: center;
-    transition-duration: 0.1s;
 }
-header .linkWrap a:hover{
-    color: #0052FF;
+#nowLink{
     background-color: #E3ECFF;
     border-radius: 5px;
-    font-weight: 500;
+    color: #0052FF;
 }
-header .linkWrap a:hover path{
+#nowLink path{
     fill: #0052FF;
 }
 header .ButtonWrap{

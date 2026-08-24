@@ -10,14 +10,19 @@ main{
     justify-content: space-evenly;
     font-family: 'Pretendard';
 }
-.check{
+.check,.checkDetail{
     display: flex;
     flex-direction: column;
     width: 1087px;
-    height: 380px;
     overflow-y: scroll;
     background-color: white;
     border-radius: 15px;
+}
+.check{
+    height: 380px;
+}
+.checkDetail{
+    height: 780px;
 }
 .check h3{
     margin: 20px;
