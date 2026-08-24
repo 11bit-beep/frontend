@@ -66,6 +66,13 @@
     font-weight: 900;
     font-display: swap;
 }
+a{
+    color: black;
+    text-decoration: none;
+}
+button,select{
+    cursor: pointer;
+}
 header{
     display: flex;
     width: 170px;
@@ -92,7 +99,6 @@ header .linkWrap a{
     gap: 10px;
     font-size: 14px;
     font-weight: 500;
-    font-family: 'Pretendard';
     align-items: center;
 }
 #nowLink{
@@ -117,7 +123,6 @@ header .ButtonWrap a{
     font-size: 14px;
     padding: 10px;
     border-radius: 5px;
-    font-family: 'Pretendard';
     font-weight: 600;
     transition-duration: 0.2s;
 }
