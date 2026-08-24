@@ -1,7 +1,142 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
 }
 header{
-
+    display: flex;
+    width: 170px;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+#logoImg{
+    width: 100px;
+    padding:30px 0;
+}
+header .linkWrap{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+header .linkWrap a{
+    width: 140px;
+    text-align: start;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Pretendard';
+    align-items: center;
+    transition-duration: 0.1s;
+}
+header .linkWrap a:hover{
+    color: #0052FF;
+    background-color: #E3ECFF;
+    border-radius: 5px;
+    font-weight: 500;
+}
+header .linkWrap a:hover path{
+    fill: #0052FF;
+}
+header .ButtonWrap{
+    padding-bottom: 30px;
+    margin-top: auto;
+    gap: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+header .ButtonWrap a{
+    text-decoration: none;
+    width: 140px;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Pretendard';
+    font-weight: 600;
+    transition-duration: 0.2s;
+}
+header .ButtonWrap a:hover{
+    transform:  scale(1.006);
+    box-shadow: 0px 1px 5px -3px rgb(6, 0, 72);
+}
+#loginButton{
+    background-color: #0052FF;
+    color:white;
+}
+#loginButton:hover{
+    background-color: #0051ffe9;
+}
+#signupButton{
+    border:2px solid #0052FF;
+    color: black;
+}
+#signupButton:hover{
+    background-color: rgb(252, 253, 255);
 }
