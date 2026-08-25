@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+button,
+select {
+  cursor: pointer;
+}
+header {
+  display: flex;
+  width: 175px;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+#logoImg {
+  width: 100px;
+  padding: 30px 0;
+}
+header .linkWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+header .linkWrap a {
+  width: 135px;
+  height: 40px;
+  text-align: start;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  align-items: center;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+header .linkWrap a:hover {
+  background-color: #e3ecff;
+  color: #0052ff;
+}
+header .linkWrap a svg path {
+  fill: #2b2b2b;
+}
+header .linkWrap a:hover svg path {
+  fill: #0052ff;
+}
+#nowLink {
+  background-color: #e3ecff;
+  border-radius: 5px;
+  color: #0052ff;
+}
+#nowLink path {
+  fill: #0052ff;
+}
+header .ButtonWrap {
+  padding-bottom: 30px;
+  margin-top: auto;
+  gap: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+header .ButtonWrap a {
+  text-decoration: none;
+  width: 135px;
+  height: 40px;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition-duration: 0.2s;
+}
+header .ButtonWrap a:hover {
+  transform: scale(1.006);
+  box-shadow: 0px 1px 5px -3px rgb(6, 0, 72);
+}
+#loginButton {
+  background-color: #0052ff;
+  color: white;
+}
+#loginButton:hover {
+  background-color: #0051ffe9;
+}
+#signupButton {
+  border: 2px solid #0052ff;
+  color: black;
+}
+#signupButton:hover {
+  background-color: rgb(252, 253, 255);
+}
+body {
+  display: flex;
+}
