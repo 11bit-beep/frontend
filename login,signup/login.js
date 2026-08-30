@@ -54,7 +54,7 @@ form.addEventListener('submit', (e) => {
     if (errorMsg) errorMsg.style.display = 'block';
   } else {
     if (errorMsg) errorMsg.style.display = 'none';
-    location.href = 'main.html';
+      location.href = '../main/main.html';
   }
 });
 
