@@ -130,17 +130,10 @@ header .ButtonWrap a:hover{
     transform:  scale(1.006);
     box-shadow: 0px 1px 5px -3px rgb(6, 0, 72);
 }
-#loginButton{
-    background-color: #0052FF;
+#logoutButton{
+    background-color: #ff3939;
     color:white;
 }
-#loginButton:hover{
-    background-color: #0051ffe9;
-}
-#signupButton{
-    border:2px solid #0052FF;
-    color: black;
-}
-#signupButton:hover{
-    background-color: rgb(252, 253, 255);
+#logoutButton:hover{
+    background-color: #ff0202;
 }
