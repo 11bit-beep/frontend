@@ -62,7 +62,8 @@ select{
 input::placeholder {color: #808080;}
 
 input:focus, select:focus {
-  outline: 2px solid #2B6FFF;
+  outline: none;
+  border-color: #2B6FFF;
 }
 
 form > button{
