@@ -331,6 +331,9 @@ main{
     display: flex;
     animation: hideMessage 1.5s forwards;
 }
+.absenceIcon,.attendanceIcon{
+    width: 16px;
+}
 @keyframes showMessage {
     70%{
     transform: translateY(-5px);
