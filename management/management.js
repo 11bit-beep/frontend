@@ -1,7 +1,7 @@
 const SVG = {
   edit: `<img src="../images/Edit.svg">`,
-  attendance: `<img src="../images/attendance.svg">`,
-  absence: `<img src="../images/absence.svg">`
+  attendance: `<img src="../images/attendance.svg" class="attendanceIcon">`,
+  absence: `<img src="../images/absence.svg" class="absenceIcon">`
 };
 
 const completePopup = document.querySelector("#completePopup");
