@@ -52,8 +52,8 @@ select{
   appearance: none;
   -webkit-appearance: none;
 
-  background:url('select.png') no-repeat right 12px center;
-  background-size: 10px;
+  background: url("../assets/icons/chevronDown.svg") no-repeat right 12px center;
+  background-size: 16px;
 
   padding:0 30px 0 15px;
   color:#808080;
@@ -148,7 +148,7 @@ form > button{
   justify-content: center;
 }
 
-.pw-toggle svg {
+.pw-toggle img {
   width: 20px;
   height: 20px;
   display: block;
