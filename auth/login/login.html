@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="bbik-name">
+    <h1 class="title">삑</h1>
+    <p class="subtitle">출결관리 시스템</p>
+  </div>
+
+  <form>
+    <!-- ID 입력 -->
+    <div class="input-group">
+      <input type="text" id="user-id" placeholder=" ">
+      <label for="user-id">ID</label>
+    </div>
+
+    <!-- 비밀번호 입력 -->
+    <div class="input-group pw-wrap">
+      <input type="password" id="pw-input" placeholder=" ">
+      <label for="pw-input">비밀번호</label>
+      <button type="button" class="pw-toggle" data-target="pw-input">
+        <img class="icon-eye" src="../assets/icons/eyeOpen.svg" alt="" aria-hidden="true">
+        <img class="icon-eye-off" src="../assets/icons/eyeClosed.svg" alt="" aria-hidden="true" style="display:none">
+      </button>
+    </div>
+
+    <button type="submit">로그인</button>
+  </form>
+
+  <a href="../signup/signup.html" class="switch-link">회원가입</a>
+  <p class="error-msg">아이디 혹은 비밀번호가 올바르지 않습니다.</p>
+
+  <script src="login.js"></script>
+</body>
+</html>
