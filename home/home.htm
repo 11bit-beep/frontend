@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11bit - 출결관리 시스템</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="../all.css" />
+  </head>
+  <body>
+    <!-- 좌측 사이드바 헤더 -->
+    <header>
+      <img src="../images/logo.svg" id="logoImg" alt="logo" />
+      <div class="linkWrap">
+        <a href="../home/home.html" class="homeLink">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5.00016 15.8332H7.50016V11.6665C7.50016 11.4304 7.58016 11.2326 7.74016 11.0732C7.90016 10.9137 8.09794 10.8337 8.3335 10.8332H11.6668C11.9029 10.8332 12.101 10.9132 12.261 11.0732C12.421 11.2332 12.5007 11.4309 12.5002 11.6665V15.8332H15.0002V8.33317L10.0002 4.58317L5.00016 8.33317V15.8332ZM3.3335 15.8332V8.33317C3.3335 8.06928 3.39266 7.81928 3.511 7.58317C3.62933 7.34706 3.79239 7.15261 4.00016 6.99984L9.00016 3.24984C9.29183 3.02762 9.62516 2.9165 10.0002 2.9165C10.3752 2.9165 10.7085 3.02762 11.0002 3.24984L16.0002 6.99984C16.2085 7.15261 16.3718 7.34706 16.4902 7.58317C16.6085 7.81928 16.6674 8.06928 16.6668 8.33317V15.8332C16.6668 16.2915 16.5035 16.684 16.1768 17.0107C15.8502 17.3373 15.4579 17.5004 15.0002 17.4998H11.6668C11.4307 17.4998 11.2329 17.4198 11.0735 17.2598C10.9141 17.0998 10.8341 16.9021 10.8335 16.6665V12.4998H9.16683V16.6665C9.16683 16.9026 9.08683 17.1007 8.92683 17.2607C8.76683 17.4207 8.56905 17.5004 8.3335 17.4998H5.00016C4.54183 17.4998 4.14961 17.3368 3.8235 17.0107C3.49738 16.6846 3.33405 16.2921 3.3335 15.8332Z"
+              fill="#2B2B2B"
+            />
+          </svg>
+          홈
+        </a>
+        <a href="../management/management.html" class="managementLink">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.25 11.25H11.25V12.5H6.25V11.25ZM6.25 8.125H13.75V9.375H6.25V8.125ZM6.25 14.375H9.375V15.625H6.25V14.375Z" fill="#2B2B2B" />
+            <path d="M15.625 3.125H13.75V2.5C13.75 2.16848 13.6183 1.85054 13.3839 1.61612C13.1495 1.3817 12.8315 1.25 12.5 1.25H7.5C7.16848 1.25 6.85054 1.3817 6.61612 1.61612C6.3817 1.85054 6.25 2.16848 6.25 2.5V3.125H4.375C4.04348 3.125 3.72554 3.2567 3.49112 3.49112C3.2567 3.72554 3.125 4.04348 3.125 4.375V17.5C3.125 17.8315 3.2567 18.1495 3.49112 18.3839C3.72554 18.6183 4.04348 18.75 4.375 18.75H15.625C15.9565 18.75 16.2745 18.6183 16.5089 18.3839C16.7433 18.1495 16.875 17.8315 16.875 17.5V4.375C16.875 4.04348 16.7433 3.72554 16.5089 3.49112C16.2745 3.2567 15.9565 3.125 15.625 3.125ZM7.5 2.5H12.5V5H7.5V2.5ZM15.625 17.5H4.375V4.375H6.25V6.25H13.75V4.375H15.625V17.5Z" fill="#2B2B2B" />
+          </svg>
+          출석관리
+        </a>
+      </div>
+      <div class="ButtonWrap">
+        <a href="../login,signup/login.html" id="logoutButton">로그아웃</a>
+      </div>
+    </header>
+
+    <!-- 출석체크 -->
+    <main>
+      <div id="attendance-check-container">
+        <div id="attendance-check-info">
+          <p id="attendance-title">오늘 출석체크를 하셨나요?</p>
+          <div id="warning-container">
+            <img src="../images/important.svg" alt="주의 아이콘" />
+            <p id="attendance-warning">오늘 야간자율학습 출석은 07:40까지 입니다.</p>
+          </div>
+        </div>
+        <button type="button" id="attendance-action-btn">출석하기</button>
+        <div id="background-container">
+          <div id="background1"></div>
+          <div id="background2"></div>
+        </div>
+      </div>
+
+      <div id="section-container">
+        <!-- 프로필 카드 -->
+        <div id="profile-container">
+          <div class="container-title">
+            <img src="../images/profileIcon.svg" alt="프로필 아이콘" />
+            <p>프로필</p>
+          </div>
+          <ul>
+            <li>
+              <p class="list-info">이름</p>
+              <p class="list-content">김도현</p>
+            </li>
+            <li>
+              <p class="list-info">학번</p>
+              <p class="list-content">1학년 3반 4번</p>
+            </li>
+            <li>
+              <p class="list-info">학과</p>
+              <p class="list-content">공통과정</p>
+            </li>
+          </ul>
+          <button type="button" id="btn-open-profile-modal">프로필 수정하기</button>
+        </div>
+
+        <!-- 최근 출석 현황 -->
+        <div id="recent-attendance-container">
+          <div class="container-title">
+            <img src="../images/timeIcon.svg" alt="프로필 아이콘" />
+            <p>최근 출석 현황</p>
+          </div>
+          <div id="recent-attendance-box">
+            <table id="recent-attendance-table">
+              <thead>
+                <tr id="table-title">
+                  <th>날짜</th>
+                  <th>요일</th>
+                  <th>출석 상태</th>
+                  <th>출석 유형</th>
+                  <th>장소</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-content">
+                  <td>2026.08.10</td>
+                  <td>월</td>
+                  <td>
+                    <div class="check">
+                      <img src="../images/Yes.svg" alt="체크 아이콘" />
+                      <p>출석</p>
+                    </div>
+                  </td>
+                  <td>자율학습</td>
+                  <td>LAB 3</td>
+                </tr>
+                <tr class="table-content">
+                  <td>2026.08.11</td>
+                  <td>화</td>
+                  <td>
+                    <div class="no">
+                      <img src="../images/No.svg" alt="엑스 아이콘" />
+                      <p>결석</p>
+                    </div>
+                  </td>
+                  <td>자율학습</td>
+                  <td>LAB 3</td>
+                </tr>
+                <tr class="table-content">
+                  <td>2026.08.12</td>
+                  <td>수</td>
+                  <td>
+                    <div class="check">
+                      <img src="../images/Yes.svg" alt="체크 아이콘" />
+                      <p>출석</p>
+                    </div>
+                  </td>
+                  <td>자율학습</td>
+                  <td>LAB 3</td>
+                </tr>
+                <tr class="table-content">
+                  <td>2026.08.13</td>
+                  <td>목</td>
+                  <td>
+                    <div class="check">
+                      <img src="../images/Yes.svg" alt="체크 아이콘" />
+                      <p>출석</p>
+                    </div>
+                  </td>
+                  <td>자율학습</td>
+                  <td>LAB 3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 모달 레이어 -->
+    <div id="profile-edit-modal" class="modal-background hidden">
+      <div class="modal-container">
+        <button type="button" class="remove-btn modal-close">
+          <img src="../images/close.svg" alt="엑스 버튼" class="remove-img" />
+        </button>
+        <div class="modal-info">
+          <p>프로필 수정하기</p>
+          <p>원하는 항목을 수정하세요.</p>
+        </div>
+        <form id="profile-form">
+          <div class="input-container">
+            <div class="select-container">
+              <p>이름</p>
+              <input type="text" class="text-input" value="김도현" />
+            </div>
+            <div class="select-container">
+              <p>학번</p>
+              <div class="select-grade-container">
+                <select class="grade-select">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <p>학년</p>
+                <select class="grade-select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                </select>
+                <p>반</p>
+                <select class="grade-select">
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="" selected>4</option>
+                  <option value="">5</option>
+                  <option value="">6</option>
+                  <option value="">7</option>
+                  <option value="">8</option>
+                  <option value="">9</option>
+                  <option value="">10</option>
+                  <option value="">11</option>
+                  <option value="">12</option>
+                  <option value="">13</option>
+                  <option value="">14</option>
+                  <option value="">15</option>
+                  <option value="">16</option>
+                  <option value="">17</option>
+                  <option value="">18</option>
+                </select>
+                <p>번호</p>
+              </div>
+            </div>
+            <div class="select-container">
+              <div class="input-info">
+                <p>학과</p>
+                <p>(학번 설정시 자동으로 선택 됩니다.)</p>
+              </div>
+              <div class="input-before" id="auto-select">
+                <p>공통과정</p>
+              </div>
+            </div>
+          </div>
+          <div class="btn-container">
+            <button type="button" class="btn-cancel modal-close">취소</button>
+            <button type="submit" class="btn-submit-blue">수정</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="attendance-check-modal" class="modal-background hidden">
+      <div class="modal-container">
+        <button type="button" class="remove-btn modal-close">
+          <img src="../images/close.svg" alt="엑스 버튼" class="remove-img" />
+        </button>
+        <div class="modal-info">
+          <p>출석하기</p>
+          <p>출석 유형과 장소를 선택해주세요.</p>
+        </div>
+        <form id="attendance-form">
+          <div class="input-container">
+            <div class="select-container">
+              <p>출석 유형</p>
+              <select required>
+                <option value="" disabled selected hidden>출석 유형을 선택해주세요</option>
+                <option>자율학습</option>
+                <option>동아리</option>
+                <option>방과후</option>
+                <option>나르샤 프로젝트</option>
+              </select>
+            </div>
+            <div class="select-container">
+              <p>출석 장소</p>
+              <select required>
+                <option value="" disabled selected hidden>출석 장소를 선택해주세요</option>
+                <option value="LAB1">LAB1</option>
+                <option value="LAB2">LAB2</option>
+                <option value="LAB3">LAB3</option>
+                <option value="LAB4">LAB4</option>
+                <option value="LAB5">LAB5</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn-container">
+            <button type="button" class="btn-cancel modal-close">취소</button>
+            <button type="submit" class="btn-submit-blue">출석</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="check-out-modal" class="modal-background hidden">
+      <div class="modal-container">
+        <button type="button" class="remove-btn modal-close">
+          <img src="../images/close.svg" alt="엑스 버튼" class="remove-img" />
+        </button>
+        <div class="modal-info">
+          <p>퇴실하기</p>
+          <p>
+            퇴실시 다시 입실이 불가합니다. <br />
+            정말로 퇴실 하시겠습니까?
+          </p>
+        </div>
+        <form id="checkout-form">
+          <div class="btn-container">
+            <button type="button" class="btn-cancel modal-close">취소</button>
+            <button type="submit" class="btn-submit-red">퇴실</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="home.js"></script>
+  </body>
+</html>
