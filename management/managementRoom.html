@@ -46,12 +46,6 @@
                     <option value="LAB_2">LAB 2실</option>
                 </select>
                 <div>출석 12명 · 결석 6명</div>
-                <div class="editButtonContainer">
-                    <button class="editButton">
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.292 7.94836L14.0507 4.70794M8.21703 17.0224L18.5882 6.65219C18.9319 6.30839 19.125 5.84216 19.125 5.35602C19.125 4.86989 18.9319 4.40366 18.5882 4.05986L17.9401 3.41177C17.5963 3.06808 17.1301 2.875 16.6439 2.875C16.1578 2.875 15.6916 3.06808 15.3478 3.41177L4.97661 13.7829L4.00494 17.9959L8.21703 17.0224Z" stroke="#555555" stroke-width="1.66667" stroke-linejoin="round"/></svg>
-                        출결 수정
-                    </button>
-                </div>
             </div>
             <div id="managementTable">
                 <div class="thead">
@@ -61,7 +55,7 @@
                         <div>상태</div>
                     </div>
                 </div>
-                <div>
+                <div class="tBody">
                     <div class="tr">
                         <div>1102</div>
                         <div>우희린</div>
@@ -87,55 +81,7 @@
             </nav>
         </div>
     </main>
-    <div class="overlay" id="completePopup">
-        <div id="editPopup">
-            <div class="popupHeadWrap">
-                <div class="popupHead">
-                    수정을 완료하시겠습니까?
-                </div>
-                <div class="popupSub">
-                    변경된 내용이 저장됩니다.
-                </div>
-            </div>
-            <div>
-                <p>변경전 : 출석12명 · 결석6명</p>
-                <p>변경후 : 출석12명 · 결석6명</p>
-            </div>
-            <div class="popupButtonWrap">
-                <button class="cancelButton">
-                    취소
-                </button>
-                <button class="confirmButton">
-                    확인
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="overlay" id="cancelPopup">
-        <div id="editPopup">
-            <div class="popupHeadWrap">
-                <div class="popupHead">
-                    수정을 취소하시겠습니까?
-                </div>
-                <div class="popupSub">
-                    수정중인 내용이 저장되지않습니다.
-                </div>
-            </div>
-            <div class="popupButtonWrap">
-                <button class="cancelButton">
-                    취소
-                </button>
-                <button class="confirmButton">
-                    확인
-                </button>
-            </div>
-        </div>
-    </div>
-    <div id="completeMessage">
-        <img src="../images/attendance.svg" class="attendanceIcon">
-        출결 수정이 완료되었습니다.
-    </div>
-    <script src="management.js"></script>
+    <script src="managementRoom.js"></script>
     <script src="../header.js"></script>
 </body>
 </html>
