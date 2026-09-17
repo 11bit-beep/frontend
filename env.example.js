@@ -1,2 +1,1 @@
-SERVER_URL = serverurl
-export const SERVER_URL
+export const SERVER_URL= serverurl
