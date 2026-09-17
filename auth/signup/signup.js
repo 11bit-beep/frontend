@@ -71,7 +71,7 @@ function checkPw(e) {
     errorMsg.style.display = 'none';
     setTimeout(() => {
       alert('회원가입이 완료되었습니다!');
-      location.href = "login.html";
+      location.href = "../login/login.html";
     }, 1);
   }
 }
