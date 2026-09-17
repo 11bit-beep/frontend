@@ -1,1 +1,0 @@
-SERVER_URL = https://port-0-backend11-toyproject-mtoimxys67c9d299.sel3.cloudtype.app/
