@@ -12,28 +12,28 @@
     <p class="subtitle">출결관리 시스템</p>
   </div>
 
-  <form>
+  <form method="post">
     <!-- 이름 입력 -->
     <div class="input-group">
-      <input type="text" id="user-name" placeholder=" ">
+      <input type="text" id="user-name" name="name" autocomplete="name" placeholder=" " required>
       <label for="user-name">이름</label>
     </div>
 
     <!-- 학년/반/번호 select -->
     <div>
-      <select>
+      <select id="grade" name="grade" aria-label="학년" required>
         <option value="" disabled selected hidden>학년</option>
         <option value="1">1학년</option>
         <option value="2">2학년</option>
         <option value="3">3학년</option>
       </select>
-      <select>
+      <select id="student-class" name="studentClass" aria-label="반" required>
         <option value="" disabled selected hidden>반</option>
         <option value="1">1반</option>
         <option value="2">2반</option>
         <option value="3">3반</option>
       </select>
-      <select>
+      <select id="student-number" name="number" aria-label="번호" required>
         <option value="" disabled selected hidden>번호</option>
         <option value="1">1번</option>
         <option value="2">2번</option>
@@ -58,15 +58,15 @@
 
     <!-- ID 입력 -->
     <div class="input-group">
-      <input type="text" id="user-id" placeholder=" ">
+      <input type="text" id="user-id" name="username" autocomplete="username" placeholder=" " required>
       <label for="user-id">ID</label>
     </div>
 
     <!-- 비밀번호 입력 -->
     <div class="input-group pw-wrap">
-      <input type="password" id="pw-input" placeholder=" ">
+      <input type="password" id="pw-input" name="password" autocomplete="new-password" placeholder=" " required>
       <label for="pw-input">비밀번호</label>
-      <button type="button" class="pw-toggle" data-target="pw-input">
+      <button type="button" class="pw-toggle" data-target="pw-input" aria-label="비밀번호 보기">
         <img class="icon-eye" src="../assets/icons/eyeOpen.svg" alt="" aria-hidden="true">
         <img class="icon-eye-off" src="../assets/icons/eyeClosed.svg" alt="" aria-hidden="true" style="display:none">
       </button>
@@ -74,20 +74,20 @@
 
     <!-- 비밀번호 확인 입력 -->
     <div class="input-group pw-wrap">
-      <input type="password" id="pw-confirm-input" placeholder=" ">
+      <input type="password" id="pw-confirm-input" autocomplete="new-password" placeholder=" " required>
       <label for="pw-confirm-input">비밀번호 확인</label>
-      <button type="button" class="pw-toggle" data-target="pw-confirm-input">
+      <button type="button" class="pw-toggle" data-target="pw-confirm-input" aria-label="비밀번호 보기">
         <img class="icon-eye" src="../assets/icons/eyeOpen.svg" alt="" aria-hidden="true">
         <img class="icon-eye-off" src="../assets/icons/eyeClosed.svg" alt="" aria-hidden="true" style="display:none">
       </button>
     </div>
 
-    <button type="submit">가입하기</button>
+    <button type="submit" disabled>가입하기</button>
   </form>
 
   <a href="../login/login.html" class="switch-link">로그인</a>
-  <p class="error-msg">비밀번호가 일치하지 않습니다.</p>
+  <p class="error-msg" role="alert"></p>
 
-  <script src="signup.js"></script>
+  <script type="module" src="signup.js"></script>
 </body>
 </html>
