@@ -2,9 +2,6 @@ import {SERVER_URL} from '../env.js';
 const tBody = document.querySelector(".tBody");
 const absenceAttendanceInfo = document.getElementById("absenceAttendanceInfo");
 const classChoice = document.getElementById("classChoice");
-const beforePageButton = document.getElementById("beforePageButton");
-const afterPageButton = document.getElementById("afterPageButton");
-const pageNumber = document.getElementById("pageNumber");
 const today = new Date().toISOString().split("T")[0]
 const dateInput = document.getElementById("dateInput");
 dateInput.value=today

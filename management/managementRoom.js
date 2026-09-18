@@ -2,9 +2,9 @@ import {SERVER_URL} from '../env.js';
 const tBody = document.querySelector(".tBody");
 const absenceAttendanceInfo = document.getElementById("absenceAttendanceInfo");
 const classChoice = document.getElementById("classChoice");
-const beforePageButton = document.getElementById("beforePageButton");
-const afterPageButton = document.getElementById("afterPageButton");
-const pageNumber = document.getElementById("pageNumber");
+const today = new Date().toISOString().split("T")[0]
+const dateInput = document.getElementById("dateInput");
+dateInput.value=today
 const YOUR_ACCESS_TOKEN = await getToken()
 async  function getToken(){
     const server_url = `${SERVER_URL}api/auth/login`;
@@ -69,8 +69,10 @@ async function checkClass(grade,studentClass,date){
 }
 classChoice.addEventListener('change',e=>{
     const selectedValue = e.target.value;
-    const studentGrade =selectedValue.split(".")[0]
-    const studentClass = selectedValue.split(".")[1];
-    checkClass(studentGrade,studentClass,new Date().toISOString().split("T")[0]);
+    checkClass(selectedValue,today);
 })
-checkClass("lab1",new Date().toISOString().split("T")[0]);
+dateInput.addEventListener('change',e=>{
+    const selectedValue = classChoice.value;
+    checkClass(selectedValue,dateInput.value);
+})
+checkClass("lab1",today);
