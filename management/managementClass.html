@@ -41,12 +41,13 @@
                 </a>
             </div>
             <div class="checkDetailContainer">
-                <select name="classChoice" id="">
+                <select name="classChoice" id="classChoice">
                     <option value="1.1">1-1</option>
                     <option value="1.2">1-2</option>
                     <option value="1.3">1-3</option>
                 </select>
-                <div>출석 12명 · 결석 6명</div>
+                <input type="date" id="dateInput">
+                <div id="absenceAttendanceInfo">출석 12명 · 결석 6명</div>
             </div>
             <div id="managementTable">
                 <div class="thead">
@@ -57,32 +58,21 @@
                     </div>
                 </div>
                 <div class="tBody">
+                    
                     <div class="tr">
-                        <div>1102</div>
-                        <div>우희린</div>
-                        <div class="absenceBlock">
-                            <img src="../images/absence.svg" class="absenceIcon">
-                            결석
-                        </div>
-                    </div>
-                    <div class="tr">
-                        <div>1102</div>
-                        <div>우희린</div>
-                        <div class="attendanceBlock">
-                            <img src="../images/attendance.svg" class="attendanceIcon">
-                            출석
-                        </div>
+                        <div>정보를 가져오고 있습니다</div>
                     </div>
                 </div>
             </div>
-            <nav>
-                <button><</button>
-                <div>1/2</div>
-                <button>></button>
-            </nav>
+            <!-- <nav>
+                <button id="beforePageButton"><</button>
+                <div id="pageNumber">1/2</div>
+                <button id="afterPageButton">></button>
+            </nav> -->
         </div>
     </main>
-    <script src="managementClass.js"></script>
+    <script src="../env.js" type="module"></script>
+    <script src="managementClass.js" type="module"></script>
     <script src="../header.js"></script>
 </body>
 </html>

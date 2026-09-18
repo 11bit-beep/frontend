@@ -41,11 +41,12 @@
                 </a>
             </div>
             <div class="checkDetailContainer">
-                <select name="classChoice" id="">
+                <select name="classChoice" id="classChoice">
                     <option value="LAB_1">LAB 1실</option>
                     <option value="LAB_2">LAB 2실</option>
                 </select>
-                <div>출석 12명 · 결석 6명</div>
+                <input type="date" id="dateInput">
+                <div id = "absenceAttendanceInfo">출석 12명 · 결석 6명</div>
             </div>
             <div id="managementTable">
                 <div class="thead">
@@ -74,11 +75,11 @@
                     </div>
                 </div>
             </div>
-            <nav>
-                <button><</button>
-                <div>1/2</div>
-                <button>></button>
-            </nav>
+            <!-- <nav>
+                <button id="beforePageButton"><</button>
+                <div id="pageNumber">1/2</div>
+                <button id="afterPageButton">></button>
+            </nav> -->
         </div>
     </main>
     <script src="managementRoom.js"></script>

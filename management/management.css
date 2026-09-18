@@ -19,6 +19,7 @@ main{
 }
 .check{
     height: 380px;
+    position: relative;
 }
 
 .check h3,.detailHead{
@@ -45,24 +46,18 @@ main{
     transition: all 0.2s ease;
 }
 
-.btn-checkbox {
-  display: none;
-}
-.btn-checkbox:checked + .floorLabel {
-  color: #ffffff;
-  background-color: #0052ff;
-  border-color: #0052ff;
-}
 .checkWrap{
     margin: 0 auto;
-    width: 100;
+    width: 100%;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
-    width: 500px;
+    padding: 0 300px;
     gap: 50px;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 .checkBlock{
     display: flex;
@@ -111,16 +106,25 @@ main{
 }
 .checkDetailContainer select{
     width: 100px;
-    border: 1px solid #aaaaaa;
+    border: 1px solid rgb(54, 54, 54);
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
+    color: rgb(54, 54, 54);
+}
+.checkDetailContainer input{
+    width: 200px;
+    border: 1px solid rgb(54, 54, 54);
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(54, 54, 54);
 }
 #managementTable{
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width: 560px;
+    width: 760px;
     border-radius: 10px;
     border: 1px solid #f5f5f5;
 }
@@ -132,12 +136,12 @@ main{
     justify-content: space-evenly;
     gap: 30px;
     padding: 20px 0;
-    width: 400px;
+    width: 660px;
     border-bottom:1px solid #e7e7e7;
 }
 #managementTable .tr div{
     color:#2b2b2b;
-    width: 70px;
+    width: 200px;
     text-align: center;
 }
 #managementTable .thead .tr div{
@@ -152,9 +156,9 @@ main{
     align-items: center;
     gap: 5px;
     justify-content: center;
-    width: 70px;
-    padding: 5px 5px;
-    margin: auto 0;
+    width: 70px!important;
+    padding: 3px 5px;
+    margin: auto 65px;
     border-radius: 10px;
 }
 .attendanceBlock{
