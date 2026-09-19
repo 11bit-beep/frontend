@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://port-0-backend11-toyproject-mtoimxys67c9d299.sel3.cloudtype.app';
+import { API_BASE_URL } from '../env.js';
 const ACCESS_TOKEN_KEY = 'accessToken';
 
 document.addEventListener('DOMContentLoaded', () => {
