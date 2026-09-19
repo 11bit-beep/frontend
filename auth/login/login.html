@@ -12,29 +12,29 @@
     <p class="subtitle">출결관리 시스템</p>
   </div>
 
-  <form>
+  <form method="post">
     <!-- ID 입력 -->
     <div class="input-group">
-      <input type="text" id="user-id" placeholder=" ">
+      <input type="text" id="user-id" name="username" autocomplete="username" placeholder=" " required>
       <label for="user-id">ID</label>
     </div>
 
     <!-- 비밀번호 입력 -->
     <div class="input-group pw-wrap">
-      <input type="password" id="pw-input" placeholder=" ">
+      <input type="password" id="pw-input" name="password" autocomplete="current-password" placeholder=" " required>
       <label for="pw-input">비밀번호</label>
-      <button type="button" class="pw-toggle" data-target="pw-input">
+      <button type="button" class="pw-toggle" data-target="pw-input" aria-label="비밀번호 보기">
         <img class="icon-eye" src="../assets/icons/eyeOpen.svg" alt="" aria-hidden="true">
         <img class="icon-eye-off" src="../assets/icons/eyeClosed.svg" alt="" aria-hidden="true" style="display:none">
       </button>
     </div>
 
-    <button type="submit">로그인</button>
+    <button type="submit" disabled>로그인</button>
   </form>
 
   <a href="../signup/signup.html" class="switch-link">회원가입</a>
-  <p class="error-msg">아이디 혹은 비밀번호가 올바르지 않습니다.</p>
+  <p class="error-msg" role="alert"></p>
 
-  <script src="login.js"></script>
+  <script type="module" src="login.js"></script>
 </body>
 </html>
