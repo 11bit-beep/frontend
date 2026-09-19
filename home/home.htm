@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>11bit - 출결관리 시스템</title>
+    <title>11bit</title>
     <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" href="../all.css" />
   </head>
@@ -12,7 +12,7 @@
     <header>
       <img src="../images/logo.svg" id="logoImg" alt="logo" />
       <div class="linkWrap">
-        <a href="../home/home.html" class="homeLink">
+        <a href="home.htm" class="homeLink">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.00016 15.8332H7.50016V11.6665C7.50016 11.4304 7.58016 11.2326 7.74016 11.0732C7.90016 10.9137 8.09794 10.8337 8.3335 10.8332H11.6668C11.9029 10.8332 12.101 10.9132 12.261 11.0732C12.421 11.2332 12.5007 11.4309 12.5002 11.6665V15.8332H15.0002V8.33317L10.0002 4.58317L5.00016 8.33317V15.8332ZM3.3335 15.8332V8.33317C3.3335 8.06928 3.39266 7.81928 3.511 7.58317C3.62933 7.34706 3.79239 7.15261 4.00016 6.99984L9.00016 3.24984C9.29183 3.02762 9.62516 2.9165 10.0002 2.9165C10.3752 2.9165 10.7085 3.02762 11.0002 3.24984L16.0002 6.99984C16.2085 7.15261 16.3718 7.34706 16.4902 7.58317C16.6085 7.81928 16.6674 8.06928 16.6668 8.33317V15.8332C16.6668 16.2915 16.5035 16.684 16.1768 17.0107C15.8502 17.3373 15.4579 17.5004 15.0002 17.4998H11.6668C11.4307 17.4998 11.2329 17.4198 11.0735 17.2598C10.9141 17.0998 10.8341 16.9021 10.8335 16.6665V12.4998H9.16683V16.6665C9.16683 16.9026 9.08683 17.1007 8.92683 17.2607C8.76683 17.4207 8.56905 17.5004 8.3335 17.4998H5.00016C4.54183 17.4998 4.14961 17.3368 3.8235 17.0107C3.49738 16.6846 3.33405 16.2921 3.3335 15.8332Z"
@@ -61,15 +61,15 @@
           <ul>
             <li>
               <p class="list-info">이름</p>
-              <p class="list-content">김도현</p>
+              <p class="list-content" id="profile-name">-</p>
             </li>
             <li>
               <p class="list-info">학번</p>
-              <p class="list-content">1학년 3반 4번</p>
+              <p class="list-content" id="profile-student-number">-</p>
             </li>
             <li>
               <p class="list-info">학과</p>
-              <p class="list-content">공통과정</p>
+              <p class="list-content" id="profile-department">공통과정</p>
             </li>
           </ul>
           <button type="button" id="btn-open-profile-modal">프로필 수정하기</button>
@@ -92,7 +92,7 @@
                   <th>장소</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="recent-attendance-body">
                 <tr class="table-content">
                   <td>2026.08.10</td>
                   <td>월</td>
@@ -162,25 +162,25 @@
           <div class="input-container">
             <div class="select-container">
               <p>이름</p>
-              <input type="text" class="text-input" value="김도현" />
+              <input type="text" class="text-input" id="profile-name-input" required />
             </div>
             <div class="select-container">
               <p>학번</p>
               <div class="select-grade-container">
-                <select class="grade-select">
+                <select class="grade-select" id="profile-grade-select">
                   <option value="1" selected>1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
                 <p>학년</p>
-                <select class="grade-select">
+                <select class="grade-select" id="profile-class-select">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3" selected>3</option>
                   <option value="4">4</option>
                 </select>
                 <p>반</p>
-                <select class="grade-select">
+                <select class="grade-select" id="profile-number-select">
                   <option value="">1</option>
                   <option value="">2</option>
                   <option value="">3</option>
@@ -209,7 +209,7 @@
                 <p>(학번 설정시 자동으로 선택 됩니다.)</p>
               </div>
               <div class="input-before" id="auto-select">
-                <p>공통과정</p>
+                <p id="profile-department-input">공통과정</p>
               </div>
             </div>
           </div>
@@ -234,7 +234,7 @@
           <div class="input-container">
             <div class="select-container">
               <p>출석 유형</p>
-              <select required>
+              <select id="attendance-type-select" required>
                 <option value="" disabled selected hidden>출석 유형을 선택해주세요</option>
                 <option>자율학습</option>
                 <option>동아리</option>
@@ -244,7 +244,7 @@
             </div>
             <div class="select-container">
               <p>출석 장소</p>
-              <select required>
+              <select id="attendance-place-select" required>
                 <option value="" disabled selected hidden>출석 장소를 선택해주세요</option>
                 <option value="LAB1">LAB1</option>
                 <option value="LAB2">LAB2</option>
@@ -283,6 +283,7 @@
       </div>
     </div>
 
+    <script src="../header.js"></script>
     <script src="home.js"></script>
   </body>
 </html>
