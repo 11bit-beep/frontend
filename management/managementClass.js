@@ -51,16 +51,17 @@ async function checkClass(grade,studentClass,date){
     if(data){
         tBody.innerHTML="";
         absenceAttendanceInfo.innerHTML=`출석 ${data.attendedCount}명 · 결석 ${data.absentCount}명`
+        console.log(data.students)
         data.students.forEach(student => {
             const studentInfo = document.createElement("div");
             studentInfo.className='tr'
             studentInfo.innerHTML=`
                         <div>${student.grade}${student.studentClass}${student.number}</div>
                         <div>${student.name}</div>
-                        <div class="${student.status=="ATTENDANCE"?"attendanceBlock":"absenceBlock"}">
-                            <img src=${student.status=="ATTENDANCE"?"../images/attendance.svg":"../images/absence.svg"}
-                            class=${student.status=="ATTENDANCE"?"attendanceIcon":"absenceIcon"}>
-                            ${student.status=="ATTENDANCE"?"출석":"결석"}
+                        <div class="${student.status=="ABSENT"?"absenceBlock":"attendanceBlock"}">
+                            <img src=${student.status=="ABSENT"?"../images/absence.svg":"../images/attendance.svg"}
+                            class=${student.status=="ABSENT"?"absenceIcon":"attendanceIcon"}>
+                            ${student.status=="ABSENT"?"결석":"출석"}
                         </div>
             `
             tBody.appendChild(studentInfo);

@@ -57,10 +57,10 @@ async function checkClass(grade,studentClass,date){
             studentInfo.innerHTML=`
                         <div>${student.grade}${student.studentClass}${student.number}</div>
                         <div>${student.name}</div>
-                        <div class="${student.status=="ABSENT"?"attendanceBlock":"absenceBlock"}">
-                            <img src=${student.status=="ABSENT"?"../images/attendance.svg":"../images/absence.svg"}
-                            class=${student.status=="ABSENT"?"attendanceIcon":"absenceIcon"}>
-                            ${student.status=="ABSENT"?"출석":"결석"}
+                        <div class="${student.status=="ABSENT"?"absenceBlock":"attendanceBlock"}">
+                            <img src=${student.status=="ABSENT"?"../images/absence.svg":"../images/attendance.svg"}
+                            class=${student.status=="ABSENT"?"absenceIcon":"attendanceIcon"}>
+                            ${student.status=="ABSENT"?"결석":"출석"}
                         </div>
             `
             tBody.appendChild(studentInfo);
