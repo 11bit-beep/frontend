@@ -1,6 +1,5 @@
 import { SERVER_URL } from '../../env.js';
 
-// 요소 선택
 const form = document.querySelector('form');
 const nameInput = document.querySelector('#user-name');
 const idInput = document.querySelector('#user-id');
@@ -15,7 +14,7 @@ const errorMsg = document.querySelector('.error-msg');
 const fields = [nameInput, idInput, pwInput, pwConfirmInput, ...selects];
 let isSubmitting = false;
 
-// 입력 상태에 따라 비번 보기(눈) 버튼 활성화
+// 비번 보기(눈알) 버튼 활성화 여부
 function toggleEyeIcon(input) {
   const toggleBtn = input.parentElement.querySelector('.pw-toggle');
   if (!toggleBtn) return;
@@ -28,7 +27,7 @@ function toggleEyeIcon(input) {
 }
 
 
-// 입력 확인 및 회원가입 버튼 활성화
+// 입력 확인 + 회원가입 버튼 활성화 여부
 function checkForm() {
   const isNameValid = nameInput.value.trim() !== '';
   const isIdValid = idInput.value.trim() !== '';
@@ -47,7 +46,24 @@ function showError(message) {
   errorMsg.style.display = 'block';
 }
 
-// 일반 입력창, 드롭다운 이벤트
+function isValidName(value) {
+  const len = value.trim().length;
+  return len >= 2 && len <= 20;
+}
+
+function isValidUsername(value) {
+  return /^[A-Za-z0-9]{4,20}$/.test(value);
+}
+
+function isValidPassword(value) {
+  return value.length >= 8
+  && /[A-Za-z]/.test(value)
+  && /[0-9]/.test(value)
+  && /[^A-Za-z0-9]/.test(value)
+  && !/\s/.test(value);
+}
+
+// 입력창 + 드롭다운
 fields.forEach(input => {
   input.addEventListener('input', (e) => {
     checkForm();
@@ -56,12 +72,23 @@ fields.forEach(input => {
   });
 });
 
-// 기본 폼 제출을 막고, 회원가입 API로 학생 정보를 보냅니다.
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (isSubmitting || !checkForm()) return;
   if (!SERVER_URL.trim()) {
     showError('env.js에 서버 주소를 입력해주세요.');
+    return;
+  }
+  if (!isValidName(nameInput.value)) {
+    showError('이름은 2~20자로 입력해주세요.');
+    return;
+  }
+  if (!isValidUsername(idInput.value)) {
+    showError('아이디는 영문과 숫자를 포함해 4~20자여야 합니다.');
+    return;
+  }
+  if (!isValidPassword(pwInput.value)) {
+    showError('비밀번호는 영문, 숫자, 특수문자를 포함해 8자 이상이어야 합니다.');
     return;
   }
   if (pwInput.value !== pwConfirmInput.value) {
@@ -72,7 +99,6 @@ form.addEventListener('submit', async (e) => {
   const student = {
     name: nameInput.value.trim(),
     username: idInput.value.trim(),
-    // 비밀번호는 입력한 그대로, 선택한 학년·반·번호는 숫자로 보냅니다.
     password: pwInput.value,
     grade: Number(gradeSelect.value),
     studentClass: Number(classSelect.value),
@@ -99,32 +125,30 @@ form.addEventListener('submit', async (e) => {
 
     if (!response.ok) {
       if (response.status === 400) {
-        throw new Error('가입 정보를 다시 확인해주세요. 이미 등록한 아이디나 학생 정보인지도 확인해주세요.');
+        throw new Error('가입 정보를 확인해주세요.');
       }
       if (response.status === 409) {
-        throw new Error('이미 등록된 정보입니다. 아이디와 학년·반·번호를 확인해주세요.');
+        throw new Error('이미 등록된 정보입니다. 입력한 내용을 확인해주세요.');
       }
       if (response.status === 429) {
         throw new Error('가입 시도가 너무 많습니다. 잠시 후 다시 시도해주세요.');
       }
       if (response.status === 404) {
-        throw new Error('회원가입 서버를 찾을 수 없습니다. 서버 주소를 확인해주세요.');
+        throw new Error('회원가입 서버를 찾을 수 없습니다.');
       }
-      throw new Error('회원가입 요청을 처리하지 못했습니다. 잠시 후 다시 확인해주세요.');
+      throw new Error('요청을 처리하지 못했습니다. 잠시 후 다시 확인해주세요.');
     }
 
-    // 회원가입 성공 응답은 새로 생성된 회원 ID(숫자)입니다.
     const memberId = await response.json();
     if (!Number.isInteger(memberId) || memberId <= 0) {
       throw new Error('가입 결과를 확인하지 못했습니다. 로그인 화면에서 가입 여부를 확인해주세요.');
     }
 
-    alert('회원가입이 완료되었습니다. 로그인해주세요.');
+    alert('회원가입이 완료되었습니다.');
     location.href = '../login/login.html';
   } catch (error) {
-    // 응답을 못 받아도 서버에서는 가입됐을 수 있으므로 자동으로 재전송하지 않습니다.
     if (error.name === 'AbortError' || error instanceof TypeError || error instanceof SyntaxError) {
-      showError('가입 결과를 확인하지 못했습니다. 서버 연결 상태를 확인하고 로그인도 시도해주세요.');
+      showError('가입 결과를 확인하지 못했습니다. 서버 연결 상태를 확인해주세요.');
     } else {
       showError(error.message);
     }
