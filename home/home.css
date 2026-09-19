@@ -152,6 +152,12 @@ header .linkWrap a:hover svg path {
   fill: #0052ff;
 } */
 
+.homeLink {
+  background-color: #e3ecff;
+  border-radius: 5px;
+  color: #0052ff;
+}
+
 /* ================= 우측 메인 콘텐츠 ================= */
 
 main {
