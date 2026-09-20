@@ -75,4 +75,4 @@ dateInput.addEventListener('change',e=>{
     const selectedValue = classChoice.value;
     checkClass(selectedValue,dateInput.value);
 })
-checkClass("lab1",today);
+checkClass(classChoice.value,today);
