@@ -1,5 +1,4 @@
 import { SERVER_URL } from '../env.js';
-const ACCESS_TOKEN_KEY = 'accessToken';
 
 document.addEventListener('DOMContentLoaded', () => {
   const profileModal = document.getElementById('profile-edit-modal');
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeModal(modal) { modal?.classList.add('hidden'); }
 
   async function request(path, options = {}) {
-    const accessToken = sessionStorage.getItem(ACCESS_TOKEN_KEY);
+    const accessToken = sessionStorage.getItem('accessToken');
     if (!accessToken) throw new Error('로그인 토큰이 없습니다. 다시 로그인해주세요.');
 
     const response = await fetch(`${SERVER_URL}${path}`, {
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (response.status === 401 || response.status === 403) {
-      sessionStorage.removeItem(ACCESS_TOKEN_KEY);
+      sessionStorage.removeItem('accessToken');
       throw new Error('로그인이 만료되었습니다. 다시 로그인해주세요.');
     }
     if (!response.ok) {
