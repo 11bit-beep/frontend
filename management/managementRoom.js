@@ -46,9 +46,10 @@ async function getServerData(place,date) {
         console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
     }
 }
-async function checkClass(grade,studentClass,date){
-    const data = await getServerData(grade,studentClass,date);
+async function checkClass(place,date){
+    const data = await getServerData(place,date);
     if(data){
+        console.log(data)
         tBody.innerHTML="";
         absenceAttendanceInfo.innerHTML=`출석 ${data.attendedCount}명 · 결석 ${data.absentCount}명`
         data.students.forEach(student => {
