@@ -58,7 +58,7 @@ async function loadPage(){
         const placeDiv = document.createElement("div");
         placeDiv.className="checkBlock";
         placeDiv.innerHTML=`<div class="checkHead">${students.place}</div>
-                <div class="checkInfo">출석 ${students.attendedCount}명 · 결석 3명</div>`;
+                <div class="checkInfo">출석 ${students.attendedCount}명</div>`;
         checkRoom.appendChild(placeDiv);
     })
 }
