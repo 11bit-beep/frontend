@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../env.js';
+import { SERVER_URL } from '../env.js';
 const ACCESS_TOKEN_KEY = 'accessToken';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accessToken = sessionStorage.getItem(ACCESS_TOKEN_KEY);
     if (!accessToken) throw new Error('로그인 토큰이 없습니다. 다시 로그인해주세요.');
 
-    const response = await fetch(`${API_BASE_URL}${path}`, {
+    const response = await fetch(`${SERVER_URL}${path}`, {
       ...options,
       headers: {
         Authorization: `Bearer ${accessToken}`,
