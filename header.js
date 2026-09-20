@@ -10,3 +10,9 @@ if (window.location.pathname ==='/management/management.html' || window.location
     homeLink.id='nowLink';
     managementLink.id='';
 }
+
+// 로그아웃 시 - 로그인 토큰도 삭제
+const logoutButton = document.querySelector('#logoutButton');
+logoutButton?.addEventListener('click', () => {
+    sessionStorage.removeItem('accessToken');
+});

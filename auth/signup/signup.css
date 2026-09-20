@@ -113,6 +113,9 @@ form > button {
 
 /* 오류 메시지*/
 .error-msg {
+  max-width: 340px;
+  margin: 0 16px;
+  line-height: 1.5;
   display: none;
   color: #FF0000;
   font-size: 14px;
