@@ -4,24 +4,11 @@ const checkRoom = document.querySelector("#checkRoom .checkWrap");
 const today = new Date().toISOString().split("T")[0];
 const YOUR_ACCESS_TOKEN = await getToken()
 async  function getToken(){
-    const server_url = `${SERVER_URL}api/auth/login`;
-    const postData = {
-  "username": "abc1234!",
-  "password": "abcdef12345!!"
-        }
-    try{
-        const response = await fetch(server_url,{
-            method:"POST",
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body:JSON.stringify(postData)
-        })
-        const data= await response.json();
-        return data.accessToken
-    }catch(error){
-        console.error(error)
+    const token = sessionStorage.getItem("accessToken");
+    if(token){
+        return token
     }
+    console.error("토큰이 존재하지 않습니다.")
 }
 async function getServerDate(){
     const server_url = `${SERVER_URL}api/attendance/summary?date=${today}`
