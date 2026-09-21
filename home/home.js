@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const accessToken = sessionStorage.getItem('accessToken');
     if (!accessToken) throw new Error('로그인 토큰이 없습니다. 다시 로그인해주세요.');
 
-    const response = await fetch(`${SERVER_URL}${path}`, {
+    const apiBaseUrl = SERVER_URL.trim().replace(/\/+$/, '');
+    const response = await fetch(`${apiBaseUrl}${path}`, {
       ...options,
       headers: {
         Authorization: `Bearer ${accessToken}`,
