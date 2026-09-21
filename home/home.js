@@ -1,5 +1,4 @@
-import { API_BASE_URL } from '../env.js';
-const ACCESS_TOKEN_KEY = 'accessToken';
+import { SERVER_URL } from '../env.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const profileModal = document.getElementById('profile-edit-modal');
@@ -17,14 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let member;
   let isCheckedIn = false;
 
-  function openModal(modal) { modal?.classList.remove('hidden'); }
-  function closeModal(modal) { modal?.classList.add('hidden'); }
+  function openModal(modal) {
+    modal?.classList.remove('hidden');
+  }
+  function closeModal(modal) {
+    modal?.classList.add('hidden');
+  }
 
   async function request(path, options = {}) {
-    const accessToken = sessionStorage.getItem(ACCESS_TOKEN_KEY);
+    const accessToken = sessionStorage.getItem('accessToken');
     if (!accessToken) throw new Error('로그인 토큰이 없습니다. 다시 로그인해주세요.');
 
-    const response = await fetch(`${API_BASE_URL}${path}`, {
+    const response = await fetch(`${SERVER_URL}${path}`, {
       ...options,
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -34,9 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (response.status === 401 || response.status === 403) {
-      sessionStorage.removeItem(ACCESS_TOKEN_KEY);
+      sessionStorage.removeItem('accessToken');
       throw new Error('로그인이 만료되었습니다. 다시 로그인해주세요.');
     }
+
     if (!response.ok) {
       const errorBody = await response.json().catch(() => ({}));
       const error = new Error(errorBody.message || errorBody.error || '요청을 처리하지 못했습니다. 잠시 후 다시 시도해주세요.');
@@ -50,9 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isCheckedIn = checkedIn;
     attendanceContainer.classList.toggle('checked-in', checkedIn);
     attendanceTitle.textContent = checkedIn ? '현재 출석 중입니다.' : '오늘 출석체크를 하셨나요?';
-    attendanceWarning.textContent = checkedIn
-      ? '퇴실시 반드시 퇴실하기 버튼을 눌러주세요.'
-      : '오늘 야간자율학습 출석은 07:40까지 입니다.';
+    attendanceWarning.textContent = checkedIn ? '퇴실시 반드시 퇴실하기 버튼을 눌러주세요.' : '오늘 야간자율학습 출석은 07:40까지 입니다.';
     btnAttendanceAction.textContent = checkedIn ? '퇴실하기' : '출석하기';
   }
 
@@ -69,7 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function toApiDate(date) {
     return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-');
   }
-  function dayName(date) { return ['일', '월', '화', '수', '목', '금', '토'][date.getDay()]; }
+  function dayName(date) {
+    return ['일', '월', '화', '수', '목', '금', '토'][date.getDay()];
+  }
 
   function attendanceRow(date, record) {
     const checkedIn = record?.status === 'CHECKED_IN' || record?.status === 'CHECKED_OUT';
@@ -83,10 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadAttendanceHistory() {
     const dates = [0, 1, 2, 3].map(dateOffset);
-    const results = await Promise.all(dates.map(async (date) => {
-      const data = await request(`/api/attendance/classes/${member.grade}/${member.studentClass}?date=${toApiDate(date)}`);
-      return { date, record: data.students?.find((student) => student.memberId === member.id) };
-    }));
+    const results = await Promise.all(
+      dates.map(async (date) => {
+        const data = await request(`/api/attendance/classes/${member.grade}/${member.studentClass}?date=${toApiDate(date)}`);
+        return { date, record: data.students?.find((student) => student.memberId === member.id) };
+      }),
+    );
     recentAttendanceBody.innerHTML = results.map(({ date, record }) => attendanceRow(date, record)).join('');
     setAttendanceState(results[0].record?.status === 'CHECKED_IN');
     return results[0].record;
@@ -128,7 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelectorAll('.modal-background').forEach((modal) => {
-    modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(modal); });
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal(modal);
+    });
     modal.querySelectorAll('.modal-close').forEach((button) => button.addEventListener('click', () => closeModal(modal)));
   });
 
@@ -167,8 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         alert(error.message);
       }
+    } finally {
+      button.disabled = false;
     }
-    finally { button.disabled = false; }
   });
 
   checkoutForm.addEventListener('submit', async (event) => {
@@ -179,8 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
       await request('/api/attendance/check_out', { method: 'PUT' });
       closeModal(checkoutModal);
       await loadAttendanceHistory();
-    } catch (error) { alert(error.message); }
-    finally { button.disabled = false; }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      button.disabled = false;
+    }
   });
 
   profileForm.addEventListener('submit', async (event) => {
@@ -200,8 +212,11 @@ document.addEventListener('DOMContentLoaded', () => {
       fillProfile(member);
       closeModal(profileModal);
       await loadAttendanceHistory();
-    } catch (error) { alert(error.message); }
-    finally { button.disabled = false; }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      button.disabled = false;
+    }
   });
 
   loadHome();
