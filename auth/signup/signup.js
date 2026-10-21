@@ -83,8 +83,8 @@ form.addEventListener('submit', async (e) => {
     showError('이름은 2~20자로 입력해주세요.');
     return;
   }
-  if (!isValidUsername(idInput.value)) {
-    showError('아이디는 영문과 숫자를 포함해 4~20자여야 합니다.');
+  if (!isValidUsername(idInput.value.trim())) {
+    showError('아이디는 영문 또는 숫자로 4~20자 입력해주세요.');
     return;
   }
   if (!isValidPassword(pwInput.value)) {
