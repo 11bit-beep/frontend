@@ -94,9 +94,15 @@ form > button{
   gap: 12px;
 }
 
-.signup-links .switch-link + .switch-link {
-  border-left: 1px solid #000;
-  padding-left: 12px;
+.signup-links .switch-link {
+  height: auto;
+  line-height: 1;
+}
+
+.divider {
+  width: 1px;
+  height: 12px;
+  background-color: #000;
 }
 
 
