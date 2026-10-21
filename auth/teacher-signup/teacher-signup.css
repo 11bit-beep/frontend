@@ -1,0 +1,14 @@
+@import url('../signup/signup.css');
+
+body {
+  padding: 24px 0;
+}
+
+form {
+  width: min(360px, 100%);
+}
+
+form div,
+form > button {
+  width: min(340px, calc(100vw - 32px));
+}

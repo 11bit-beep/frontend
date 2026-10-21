@@ -88,6 +88,17 @@ form > button{
   /* margin-top: 15px; */
 }
 
+.signup-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.signup-links .switch-link + .switch-link {
+  border-left: 1px solid #000;
+  padding-left: 12px;
+}
+
 
 
 /* 로고,타이틀 */
