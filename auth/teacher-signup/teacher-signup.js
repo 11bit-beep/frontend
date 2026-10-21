@@ -6,6 +6,10 @@ const pwConfirmInput = document.querySelector('#pw-confirm-input');
 const submitBtn = document.querySelector('button[type="submit"]');
 const errorMsg = document.querySelector('.error-msg');
 const fields = [nameInput, idInput, pwInput, pwConfirmInput];
+const isTest = new URLSearchParams(location.search).get('test') === '1';
+let isSubmitting = false;
+
+document.querySelector('.test-msg').hidden = !isTest;
 
 function toggleEyeIcon(input) {
   const toggleBtn = input.parentElement.querySelector('.pw-toggle');
@@ -19,8 +23,8 @@ function checkForm() {
     && pwInput.value.length > 0
     && pwConfirmInput.value.length > 0;
 
-  submitBtn.disabled = !isValid;
-  submitBtn.style.opacity = isValid ? '1' : '0.5';
+  submitBtn.disabled = isSubmitting || !isValid;
+  submitBtn.style.opacity = submitBtn.disabled ? '0.5' : '1';
   return isValid;
 }
 
@@ -54,9 +58,15 @@ fields.forEach(input => {
   });
 });
 
-form.addEventListener('submit', (e) => {
+function signupTest() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve({ ok: true }), 500);
+  });
+}
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  if (!checkForm()) return;
+  if (isSubmitting || !checkForm()) return;
 
   if (!isValidName(nameInput.value)) {
     showError('이름은 2~20자로 입력해주세요.');
@@ -75,7 +85,29 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  showError('선생님 회원가입은 준비 중입니다.');
+  if (!isTest) {
+    showError('선생님 회원가입은 준비 중입니다.');
+    return;
+  }
+
+  isSubmitting = true;
+  fields.forEach(field => { field.disabled = true; });
+  submitBtn.textContent = '가입 중...';
+  checkForm();
+
+  try {
+    const response = await signupTest();
+    if (!response.ok) throw new Error('가입 화면 테스트를 완료하지 못했습니다.');
+    alert('가입 화면 테스트가 완료되었습니다. 실제 계정은 생성되지 않습니다.');
+    location.href = '../login/login.html';
+  } catch (error) {
+    showError(error.message);
+  } finally {
+    isSubmitting = false;
+    fields.forEach(field => { field.disabled = false; });
+    submitBtn.textContent = '가입하기';
+    checkForm();
+  }
 });
 
 document.querySelectorAll('.pw-toggle').forEach(btn => {
