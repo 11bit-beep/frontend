@@ -77,7 +77,6 @@ form.addEventListener('submit', async (e) => {
       throw new Error('로그인 응답에 토큰이 없습니다. 서버 응답을 확인해주세요.');
     }
 
-    // 로그인 뿐만 아니라 다른 파일에서도 sessionStorage.getItem('accessToken')으로 사용해주세요
     try {
       sessionStorage.setItem('accessToken', data.accessToken);
     } catch {
@@ -134,7 +133,6 @@ function toggleEyeIcon(input) {
   }
 }
 
-// 새로고침,뒤로가기 등으로 입력값이 복원됐을 때도 버튼 상태 유지
 window.addEventListener('pageshow', () => {
   checkForm();
   toggleEyeIcon(pwInput);
