@@ -77,12 +77,18 @@ form.addEventListener('submit', async (e) => {
       throw new Error('로그인 응답에 토큰이 없습니다. 서버 응답을 확인해주세요.');
     }
 
+    if (data.role !== 'ROLE_STUDENT' && data.role !== 'ROLE_TEACHER') {
+      throw new Error('로그인 응답에서 학생·선생님 구분 정보를 확인하지 못했습니다.');
+    }
+
     try {
       sessionStorage.setItem('accessToken', data.accessToken);
     } catch {
       throw new Error('로그인 정보를 저장할 수 없습니다. 브라우저의 저장소 설정을 확인해주세요.');
     }
-    location.href = '../../home/home.htm';
+    location.href = data.role === 'ROLE_TEACHER'
+      ? '../../management/management.html'
+      : '../../home/home.htm';
   } catch (error) {
     if (error.name === 'AbortError') {
       showError('서버 응답이 늦어지고 있습니다. 잠시 후 다시 시도해주세요.');

@@ -76,7 +76,7 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (isSubmitting || !checkForm()) return;
   if (!SERVER_URL.trim()) {
-    showError('env.js에 서버 주소를 입력해주세요.');
+    showError('서버 주소를 확인해주세요.');
     return;
   }
   if (!isValidName(nameInput.value)) {
@@ -124,6 +124,10 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      if ((response.status === 400 || response.status === 409) && errorData?.message === '이미 존재하는 아이디입니다.') {
+        throw new Error('이미 사용 중인 아이디입니다.');
+      }
       if (response.status === 400) {
         throw new Error('가입 정보를 확인해주세요.');
       }
