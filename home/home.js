@@ -37,9 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     });
 
-    if (response.status === 401 || response.status === 403) {
+    if (response.status === 401) {
       sessionStorage.removeItem('accessToken');
       throw new Error('로그인이 만료되었습니다. 다시 로그인해주세요.');
+    }
+    if (response.status === 403) {
+      throw new Error('이 요청을 처리할 권한이 없습니다.');
     }
 
     if (!response.ok) {
@@ -90,8 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dates = [0, 1, 2, 3].map(dateOffset);
     const results = await Promise.all(
       dates.map(async (date) => {
-        const data = await request(`/api/attendance/classes/${member.grade}/${member.studentClass}?date=${toApiDate(date)}`);
-        return { date, record: data.students?.find((student) => student.memberId === member.id) };
+        const record = await request(`/api/attendance/me?date=${toApiDate(date)}`);
+        return { date, record };
       }),
     );
     recentAttendanceBody.innerHTML = results.map(({ date, record }) => attendanceRow(date, record)).join('');
