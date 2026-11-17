@@ -11,6 +11,7 @@ const numberSelect = document.querySelector('#student-number');
 const selects = document.querySelectorAll('select');
 const submitBtn = document.querySelector('button[type="submit"]');
 const errorMsg = document.querySelector('.error-msg');
+let capsLockOn = false;
 const fields = [nameInput, idInput, pwInput, pwConfirmInput, ...selects];
 let isSubmitting = false;
 
@@ -68,9 +69,24 @@ fields.forEach(input => {
   input.addEventListener('input', (e) => {
     checkForm();
     toggleEyeIcon(e.target);
+    if (!capsLockOn) errorMsg.style.display = 'none';
+  });
+});
+
+[pwInput, pwConfirmInput].forEach(input => {
+  input.addEventListener('keydown', updateCapsLockWarning);
+  input.addEventListener('keyup', updateCapsLockWarning);
+  input.addEventListener('blur', () => {
+    capsLockOn = false;
     errorMsg.style.display = 'none';
   });
 });
+
+function updateCapsLockWarning(event) {
+  capsLockOn = event.getModifierState('CapsLock');
+  if (capsLockOn) showError('Caps Lock이 켜져 있습니다.');
+  else errorMsg.style.display = 'none';
+}
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
