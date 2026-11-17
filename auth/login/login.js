@@ -7,6 +7,7 @@ const submitBtn = document.querySelector('button[type="submit"]');
 const errorMsg = document.querySelector('.error-msg');
 
 let isSubmitting = false;
+let capsLockOn = false;
 
 function checkForm() {
   const isIdValid = idInput.value.trim() !== '';
@@ -24,9 +25,22 @@ function showError(message) {
   input.addEventListener('input', () => {
     checkForm();
     toggleEyeIcon(pwInput);
-    errorMsg.style.display = 'none';
+    if (!capsLockOn) errorMsg.style.display = 'none';
   });
 });
+
+pwInput.addEventListener('keydown', updateCapsLockWarning);
+pwInput.addEventListener('keyup', updateCapsLockWarning);
+pwInput.addEventListener('blur', () => {
+  capsLockOn = false;
+  errorMsg.style.display = 'none';
+});
+
+function updateCapsLockWarning(event) {
+  capsLockOn = event.getModifierState('CapsLock');
+  if (capsLockOn) showError('Caps Lock이 켜져 있습니다.');
+  else errorMsg.style.display = 'none';
+}
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
